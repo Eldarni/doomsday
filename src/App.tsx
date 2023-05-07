@@ -6,6 +6,9 @@ import React, { useState } from 'react'
 import { format } from 'date-fns'
 
 //
+import { i18n } from './i18n'
+
+//
 import { createRandomDate } from './functions'
 
 //
