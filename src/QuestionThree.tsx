@@ -28,7 +28,7 @@ function QuestionThree(props: { targetDate: Date }) {
 
     //
     const handleButtonClick = (answer: Date) => {
-        
+
         //update the clicked button with the correct states (basically set if it was a correct or incorrect answer) (using let as we may update this a couple of times)
         let updatedButtons = buttons.map((button) => ((isSameDay(answer, button.date)) ? { ...button, clicked: true, enabled: false, correct: (isSameDay(answer, correctDate)) } : button ))
 
@@ -36,7 +36,7 @@ function QuestionThree(props: { targetDate: Date }) {
         if (updatedButtons.filter((button) => button.clicked && button.correct === false).length == 1) {
             for (var i = 0; i < 2; i++) {
 
-                //get any remaining options, filter out the correct value, and any that have already been clicked - we are going to 
+                //get any remaining options, filter out the correct value, and any that have already been clicked - we are going to
                 const remainingButtons = updatedButtons.filter((button) => button.clicked == false && button.enabled == true && !isSameDay(button.date, correctDate))
 
                 //disable one of the buttons
@@ -47,7 +47,7 @@ function QuestionThree(props: { targetDate: Date }) {
         }
 
         //if they got an answer wrong again - just tell them the correct answer
-        if (updatedButtons.filter((button) => button.clicked && button.correct === false).length == 2) { 
+        if (updatedButtons.filter((button) => button.clicked && button.correct === false).length == 2) {
             setShowCorrectAnswer(true)
         }
 
@@ -58,8 +58,8 @@ function QuestionThree(props: { targetDate: Date }) {
 
     //
     return (
-        <React.Fragment>           
-            
+        <React.Fragment>
+
             <fieldset className="questionWrapper" disabled={showCorrectAnswer}>
 
                 <p className="questionText">What is the nearest doomsday for <b>{format(props.targetDate, 'MMMM do')}</b>?</p>
@@ -71,7 +71,7 @@ function QuestionThree(props: { targetDate: Date }) {
                     ))}
                 </div>
 
-                {showCorrectAnswer === true && 
+                {showCorrectAnswer === true &&
                     <p className="questionAnswer">The correct answer is <b>{format(getDateOfNearestDoomsday(props.targetDate), 'MMMM do')}</b>.</p>
                 }
 

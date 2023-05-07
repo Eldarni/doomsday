@@ -3,7 +3,6 @@
 import React, { useState } from 'react'
 import { format } from 'date-fns'
 
-
 //
 import { convertDayNumberToName } from './functions'
 
@@ -29,7 +28,7 @@ function QuestionFour(props: { targetDate: Date }) {
 
     //
     const handleButtonClick = (answer: number) => {
-        
+
         //update the clicked button with the correct states (basically set if it was a correct or incorrect answer) (using let as we may update this a couple of times)
         let updatedButtons = buttons.map((button) => ((button.day == answer) ? { ...button, clicked: true, enabled: false, correct: correctDate == answer } : button ))
 
@@ -37,7 +36,7 @@ function QuestionFour(props: { targetDate: Date }) {
         if (updatedButtons.filter((button) => button.clicked && button.correct === false).length == 1) {
             for (var i = 0; i < 2; i++) {
 
-                //get any remaining options, filter out the correct value, and any that have already been clicked - we are going to 
+                //get any remaining options, filter out the correct value, and any that have already been clicked - we are going to
                 const remainingButtons = updatedButtons.filter((button) => button.clicked == false && button.enabled == true && (button.day != correctDate))
 
                 //disable one of the buttons
@@ -48,7 +47,7 @@ function QuestionFour(props: { targetDate: Date }) {
         }
 
         //if they got an answer wrong again - just tell them the correct answer
-        if (updatedButtons.filter((button) => button.clicked && button.correct === false).length == 2) { 
+        if (updatedButtons.filter((button) => button.clicked && button.correct === false).length == 2) {
             setShowCorrectAnswer(true)
         }
 
@@ -59,8 +58,8 @@ function QuestionFour(props: { targetDate: Date }) {
 
     //
     return (
-        <React.Fragment>           
-            
+        <React.Fragment>
+
             <fieldset className="questionWrapper" disabled={showCorrectAnswer}>
 
                 <p className="questionText">And finally, what day of the of the week does the <b>{format(props.targetDate, 'P')}</b> fall on?</p>
@@ -72,7 +71,7 @@ function QuestionFour(props: { targetDate: Date }) {
                     ))}
                 </div>
 
-                {showCorrectAnswer === true && 
+                {showCorrectAnswer === true &&
                     <p className="questionAnswer">The correct answer is <b>{convertDayNumberToName(props.targetDate.getDay())}</b>.</p>
                 }
 
