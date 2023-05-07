@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 import { convertDayNumberToName, getAnchorDayForYear } from './functions'
 
 //Question Two: What is the anchor date for the year?
-function QuestionTwo(props: { year:number }) {
+function QuestionTwo(props: { targetDate: Date }) {
 
     //
     const [showCorrectAnswer, setShowCorrectAnswer] = useState(false)
@@ -26,14 +26,14 @@ function QuestionTwo(props: { year:number }) {
     const handleButtonClick = (answer: number) => {
         
         //update the clicked button with the correct states (basically set if it was a correct or incorrect answer) (using let as we may update this a couple of times)
-        let updatedButtons = buttons.map((button) => ((button.day === answer) ? { ...button, clicked: true, enabled: false, correct: (answer == getAnchorDayForYear(props.year)) } : button ))
+        let updatedButtons = buttons.map((button) => ((button.day === answer) ? { ...button, clicked: true, enabled: false, correct: (answer == getAnchorDayForYear(year)) } : button ))
 
         //count how many wrong answers we have (from the clicked buttons) - if it's one, then disable two wrong buttons
         if (updatedButtons.filter((button) => button.clicked && button.correct === false).length == 1) {
             for (var i = 0; i < 2; i++) {
 
                 //get any remaining options, filter out the correct value, and any that have already been clicked - we are going to 
-                const remainingButtons = updatedButtons.filter((button) => button.clicked == false && button.enabled == true && button.day !== getAnchorDayForYear(props.year))
+                const remainingButtons = updatedButtons.filter((button) => button.clicked == false && button.enabled == true && button.day !== getAnchorDayForYear(year))
 
                 //disable a day at random
                 const dayToDisable = remainingButtons[Math.floor(Math.random() * remainingButtons.length)].day
@@ -58,7 +58,7 @@ function QuestionTwo(props: { year:number }) {
 
             <fieldset className="questionWrapper" disabled={showCorrectAnswer}>
 
-                <p className="questionText">What is the anchor day for year {props.year}?</p>
+                <p className="questionText">What is the anchor day for year {year}?</p>
                 <div className="questionOptions">
                     {buttons.map((button) => (
                         <button key={button.day} onClick={() => handleButtonClick(button.day)} disabled={!button.enabled} className={button.clicked ? (button.correct ? 'correct' : 'incorrect') : ''}>
@@ -68,7 +68,7 @@ function QuestionTwo(props: { year:number }) {
                 </div>
 
                 {showCorrectAnswer === true && 
-                    <p className="questionAnswer">The correct answer is <b>{convertDayNumberToName(getAnchorDayForYear(props.year))}</b>.</p>
+                    <p className="questionAnswer">The correct answer is <b>{convertDayNumberToName(getAnchorDayForYear(year))}</b>.</p>
                 }
 
             </fieldset>

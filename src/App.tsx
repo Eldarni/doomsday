@@ -20,12 +20,6 @@ function App() {
     //
     const [ targetDate, setTargetDate ] = useState(createRandomDate())
 
-    //split the date into some useful values
-    const century = Math.floor(targetDate.getFullYear() / 100) * 100
-    const year    = targetDate.getFullYear()
-    const month   = (targetDate.getMonth() + 1)
-    const date    = targetDate.getDate()
-
     //
     return (
         <React.Fragment>
@@ -33,7 +27,7 @@ function App() {
             <h1 className="targetDate">{format(targetDate, 'yyyy-MM-dd')}</h1>
 
             <QuestionOne targetDate={targetDate} />
-            <QuestionTwo year={year} />
+            <QuestionTwo targetDate={targetDate} />
             <QuestionThree targetDate={targetDate} />
             <QuestionFour targetDate={targetDate} />
 
