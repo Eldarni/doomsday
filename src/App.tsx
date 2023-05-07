@@ -32,7 +32,7 @@ function App() {
             
             <h1 className="targetDate">{format(targetDate, 'yyyy-MM-dd')}</h1>
 
-            <QuestionOne century={century} />
+            <QuestionOne targetDate={targetDate} />
             <QuestionTwo year={year} />
             <QuestionThree targetDate={targetDate} />
             <QuestionFour targetDate={targetDate} />

@@ -51,5 +51,32 @@ function getDateOfNearestDoomsday(date: Date): Date {
     return addDays(doomsday, Math.floor(differenceInCalendarDays(date, doomsday) / 7) * 7)
 }
 
+//calculate the ordinal suffix for a number
+function getOrdinalSuffix(number:number) : string {
+
+    //
+    const plurals = new Intl.PluralRules('en-GB', { type: 'ordinal' })
+
+    //
+    const pluralMapping = {
+        'zero'  : 'th',
+        'one'   : 'st',
+        'two'   : 'nd',
+        'few'   : 'rd',
+        'many'  : 'th',
+        'other' : 'th',
+    }
+
+    //
+    return pluralMapping[plurals.select(number)]
+
+}
+
+//get century + suffix
+function getCenturyString(date: Date) : string {
+    const century = Math.floor(date.getFullYear() / 100) + 1
+    return century.toString() + getOrdinalSuffix(century)
+}
+
 //
-export { createRandomDate, convertDayNumberToName, convertMonthNumberToName, getAnchorDayForCentury, getAnchorDayForYear, getDoomsdayForMonth, getDateOfNearestDoomsday }
+export { createRandomDate, convertDayNumberToName, convertMonthNumberToName, getAnchorDayForCentury, getAnchorDayForYear, getDoomsdayForMonth, getDateOfNearestDoomsday, getOrdinalSuffix, getCenturyString }
