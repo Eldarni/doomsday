@@ -1,4 +1,8 @@
 {
-    "Hello {0}!": "Hallo {0}!"
+    "What day does {0} land on?": "An welchem Tag landet der {0}?",
+    "What is the anchor day for the {0} century?": "Was ist der Ankertag für das {0} Jahrhundert?",
+    "The correct answer is {0}.": "Die korrekte Antwort lautet {0}.",
+    "What is the anchor day for the year {0}?": "Was ist der Ankertag für das Jahr {0}?",
+    "What is the nearest doomsday for {0}?": "Welches ist der nächstgelegene Tag des Jüngsten Gerichts für den {0}?",
+    "And finally, what day of the of the week does the {0} fall on?": "Und schließlich, auf welchen Wochentag fällt der {0}?"
 }
-  

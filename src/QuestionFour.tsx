@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { format } from 'date-fns'
 
 //
-import { convertDayNumberToName } from './functions'
+import { __, getNameOfDay } from './i18n'
 
 //Question Four: (Now this is the big one) - What day of the week is the date on?
 function QuestionFour(props: { targetDate: Date }) {
@@ -62,17 +62,17 @@ function QuestionFour(props: { targetDate: Date }) {
 
             <fieldset className="questionWrapper" disabled={showCorrectAnswer}>
 
-                <p className="questionText">And finally, what day of the of the week does the <b>{format(props.targetDate, 'P')}</b> fall on?</p>
+                <p className="questionText">{__`And finally, what day of the of the week does the ${props.targetDate}:d(PPP) fall on?`}</p>
                 <div className="questionOptions">
                     {buttons.map((button) => (
                         <button key={button.day} onClick={() => handleButtonClick(button.day)} disabled={!button.enabled} className={button.clicked ? (button.correct ? 'correct' : 'incorrect') : ''}>
-                            {convertDayNumberToName(button.day)}
+                            {getNameOfDay(button.day)}
                         </button>
                     ))}
                 </div>
 
                 {showCorrectAnswer === true &&
-                    <p className="questionAnswer">The correct answer is <b>{convertDayNumberToName(props.targetDate.getDay())}</b>.</p>
+                    <p className="questionAnswer">{__`The correct answer is ${props.targetDate}:d(EEEE).`}</p>
                 }
 
             </fieldset>

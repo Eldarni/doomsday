@@ -1,4 +1,8 @@
 {
-    "Hello {0}!": "Hello {0}!"
+    "What day does {0} land on?": "What day does {0} land on?",
+    "What is the anchor day for the {0} century?": "What is the anchor day for the {0} century?",
+    "The correct answer is {0}.": "The correct answer is {0}.",
+    "What is the anchor day for the year {0}?": "What is the anchor day for the year {0}?",
+    "What is the nearest doomsday for {0}?": "What is the nearest doomsday for {0}?",
+    "And finally, what day of the of the week does the {0} fall on?": "And finally, what day of the of the week does the {0} fall on?"
 }
-  

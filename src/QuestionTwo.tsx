@@ -3,7 +3,10 @@
 import React, { useState } from 'react'
 
 //
-import { convertDayNumberToName, getAnchorDayForYear } from './functions'
+import { __, getNameOfDay } from './i18n'
+
+//
+import { getAnchorDayForYear } from './functions'
 
 //Question Two: What is the anchor date for the year?
 function QuestionTwo(props: { targetDate: Date }) {
@@ -61,17 +64,17 @@ function QuestionTwo(props: { targetDate: Date }) {
 
             <fieldset className="questionWrapper" disabled={showCorrectAnswer}>
 
-                <p className="questionText">What is the anchor day for year {year}?</p>
+                <p className="questionText">{__`What is the anchor day for the year ${year}?`}</p>
                 <div className="questionOptions">
                     {buttons.map((button) => (
                         <button key={button.day} onClick={() => handleButtonClick(button.day)} disabled={!button.enabled} className={button.clicked ? (button.correct ? 'correct' : 'incorrect') : ''}>
-                            {convertDayNumberToName(button.day)}
+                            {getNameOfDay(button.day)}
                         </button>
                     ))}
                 </div>
 
                 {showCorrectAnswer === true &&
-                    <p className="questionAnswer">The correct answer is <b>{convertDayNumberToName(getAnchorDayForYear(year))}</b>.</p>
+                    <p className="questionAnswer">{__`The correct answer is ${getAnchorDayForYear(year)}:d(EEEE).`}</p>
                 }
 
             </fieldset>

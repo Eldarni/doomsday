@@ -3,7 +3,10 @@
 import React, { useState } from 'react'
 
 //
-import { convertDayNumberToName, getAnchorDayForCentury, getCenturyString } from './functions'
+import { __, getNameOfDay } from './i18n'
+
+//
+import { getAnchorDayForCentury } from './functions'
 
 //Question One: What is the anchor day for the century?
 function QuestionOne(props: { targetDate: Date }) {
@@ -24,6 +27,9 @@ function QuestionOne(props: { targetDate: Date }) {
 
     //
     const century = Math.floor(props.targetDate.getFullYear() / 100) * 100
+
+    //
+    const centuryNumber = (century / 100) + 1
 
     //
     const handleButtonClick = (answer: number) => {
@@ -61,17 +67,17 @@ function QuestionOne(props: { targetDate: Date }) {
 
             <fieldset className="questionWrapper" disabled={showCorrectAnswer}>
 
-                <p className="questionText">What is the anchor day for the {getCenturyString(props.targetDate)} century?</p>
+                <p className="questionText">{__`What is the anchor day for the ${centuryNumber}:o century?`}</p>
                 <div className="questionOptions">
                     {buttons.map((button) => (
                         <button key={button.day} onClick={() => handleButtonClick(button.day)} disabled={!button.enabled} className={button.clicked ? (button.correct ? 'correct' : 'incorrect') : ''}>
-                            {convertDayNumberToName(button.day)}
+                            {getNameOfDay(button.day)}
                         </button>
                     ))}
                 </div>
 
                 {showCorrectAnswer === true &&
-                    <p className="questionAnswer">The correct answer is <b>{convertDayNumberToName(getAnchorDayForCentury(century))}</b>.</p>
+                    <p className="questionAnswer">{__`The correct answer is ${getAnchorDayForCentury(century)}:d(EEEE).`}</p>
                 }
 
             </fieldset>

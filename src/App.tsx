@@ -3,10 +3,7 @@
 import React, { useState } from 'react'
 
 //
-import { format } from 'date-fns'
-
-//
-import { i18n } from './i18n'
+import __ from './i18n'
 
 //
 import { createRandomDate } from './functions'
@@ -27,7 +24,7 @@ function App() {
     return (
         <React.Fragment>
 
-            <h1 className="targetDate">{format(targetDate, 'yyyy-MM-dd')}</h1>
+            <h1 className="targetDate">{__`What day does ${targetDate}:d(P) land on?`}</h1>
 
             <QuestionOne targetDate={targetDate} />
             <QuestionTwo targetDate={targetDate} />

@@ -1,7 +1,10 @@
 
 //
 import React, { useState } from 'react'
-import { format, isSameDay, subDays } from 'date-fns'
+import { isSameDay, subDays, getDate, getMonth } from 'date-fns'
+
+//
+import { __, formatOrdinalNumber, getNameOfMonth } from './i18n'
 
 //
 import { getDateOfNearestDoomsday } from './functions'
@@ -62,17 +65,17 @@ function QuestionThree(props: { targetDate: Date }) {
 
             <fieldset className="questionWrapper" disabled={showCorrectAnswer}>
 
-                <p className="questionText">What is the nearest doomsday for <b>{format(props.targetDate, 'MMMM do')}</b>?</p>
+                <p className="questionText">{__`What is the nearest doomsday for ${props.targetDate}:d(MMMM do)?`}</p>
                 <div className="questionOptions">
                     {buttons.map((button) => (
                         <button key={button.id} onClick={() => handleButtonClick(button.date)} disabled={!button.enabled} className={button.clicked ? (button.correct ? 'correct' : 'incorrect') : ''}>
-                            {format(new Date(button.date), 'do') } <small>{format(new Date(button.date), 'MMMM') }</small>
+                            {formatOrdinalNumber(getDate(button.date))} <small>{getNameOfMonth(getMonth((button.date)))}</small>
                         </button>
                     ))}
                 </div>
 
                 {showCorrectAnswer === true &&
-                    <p className="questionAnswer">The correct answer is <b>{format(getDateOfNearestDoomsday(props.targetDate), 'MMMM do')}</b>.</p>
+                    <p className="questionAnswer">{__`The correct answer is ${getDateOfNearestDoomsday(props.targetDate)}:d(PPP).`}</p>
                 }
 
             </fieldset>
