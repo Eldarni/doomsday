@@ -1,47 +1,22 @@
 
-//import the translations
-import enGB from './languages/en-GB.json' //with { type: "json" };
-import deDE from './languages/de-DE.json' //with { type: "json" };
-
-//defaine the available translations
-const translations = {
-    'en-GB' : enGB,
-    'de-DE' : deDE,
-}
-
-//what locale to use
-const locale = 'de-DE'
-
-// Matches optional type annotations in i18n strings. 
-// e.g. i18n`This is a number ${x}:n(2)` formats x as number with two fractional digits.
-const typeAnnotationsRegex = /^:([a-z])(\((.+)\))?/
+//import the translations and localiser/helper functions (some of these are just passed directly to the export)
+import { translations, formatDate, formatOrdinalNumber, getNameOfDay, getNameOfMonth } from './languages'
 
 //format the value based on the type annotations, if no annotation is found, it defaults to ":s"
 const localizers = {
-
-    //
-    's': (value:string) => {
-        return value
-    },
-
-    //
-    'n': (value:number, fractionalDigits:number) => {
-        return value.toLocaleString(locale, {
-            minimumFractionDigits: fractionalDigits,
-            maximumFractionDigits: fractionalDigits
-        })
-    }
-
+    's': (value:string) => value,
+    'd': (value:Date, pattern:string) => formatDate(value, pattern),
+    'o': (value:number) => formatOrdinalNumber(value),
 }
 
 //main translation function - used as a tag on template literals
-function __(strings:string[], ...values:unknown[]) {
+function __(strings:TemplateStringsArray, ...values:unknown[]) {
 
     //
     let translationKey = buildTranslationKey(strings)
 
     //
-    let translationString = translations[locale][translationKey]
+    let translationString = translations[translationKey]
 
     //
     if (translationString) {
@@ -51,13 +26,16 @@ function __(strings:string[], ...values:unknown[]) {
     }
 
     //
+    console.warn(`Translation missing for key: "${translationKey}"`)
+
+    //
     return 'Error: translation missing!'
 
 }
 
 //parse the annotations, and return a object to pass to the localiser function
 function extractTypeAnnotation(value:string) {
-    let match = typeAnnotationsRegex.exec(value)
+    let match = /^:([a-z])(\((.+)\))?/.exec(value)
     if (match) {
         return { 'type': match[1], 'options': match[3] }
     } else {
@@ -71,11 +49,11 @@ function localiseValue(value:unknown, { type, options }) {
 }
 
 //conver the incoming strings data into a key that we can use to lookup the appropiate translation
-function buildTranslationKey(strings:string[]) {
+function buildTranslationKey(strings:TemplateStringsArray) {
 
     //define a funtion to strip the type annotiations from the strings
     const stripAnnotations = (string:string) => { 
-        return string.replace(typeAnnotationsRegex, '')
+        return string.replace(/^:([a-z])(\((.+)\))?/, '')
     }
 
     //strip the annotations from the last element first, and use this to bu
@@ -98,3 +76,4 @@ function buildMessage(string:string, ...values:string[]) {
 
 //
 export default __
+export { __, getNameOfDay, getNameOfMonth }
