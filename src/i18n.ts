@@ -76,4 +76,4 @@ function buildMessage(string:string, ...values:string[]) {
 
 //
 export default __
-export { __, getNameOfDay, getNameOfMonth }
+export { __, formatDate, formatOrdinalNumber, getNameOfDay, getNameOfMonth }
