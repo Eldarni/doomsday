@@ -54,6 +54,29 @@ body {
 	height: 100vh;
 }
 
+/* add hexagons to the background - https://css-pattern.com/ */
+body::after {
+
+    position: absolute;
+    inset: 0;
+    content: '';
+    z-index: -1;
+
+    /* edit these to control the size and colours */
+    --hexSize: 2em;
+    --hexFillColour: rgba(0, 0, 0, 0.01);
+    --hexBorderColour: rgba(0, 0, 0, 0.0);
+
+    /* don't edit these */
+    --g1: conic-gradient(from  60deg at 56.25% calc(425%/6),  #0000, var(--hexFillColour) .5deg 119.5deg, #0000 120deg);
+    --g2: conic-gradient(from 180deg at 43.75% calc(425%/6),  #0000, var(--hexFillColour) .5deg 119.5deg, #0000 120deg);
+    --g3: conic-gradient(from -60deg at 50%    calc(175%/12), #0000, var(--hexFillColour) .5deg 119.5deg, #0000 120deg);
+
+    background: var(--g1), var(--g1) var(--hexSize) calc(1.73 * var(--hexSize)), var(--g2), var(--g2) var(--hexSize) calc(1.73 * var(--hexSize)), var(--g3) var(--hexSize) 0, var(--g3) 0 calc(1.73 * var(--hexSize)) var(--hexBorderColour);
+    background-size: calc(2 * var(--hexSize)) calc(3.46 * var(--hexSize));
+
+}
+
 @keyframes gradient {
     0%   { background-position: 0%    50%; }
     50%  { background-position: 100%  50%; } 
