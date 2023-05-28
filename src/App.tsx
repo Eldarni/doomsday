@@ -6,6 +6,9 @@ import React, { useState } from 'react'
 import __ from './i18n'
 
 //
+import { availableLanguages } from './languages'
+
+//
 import { createRandomDate } from './functions'
 
 //
@@ -21,6 +24,12 @@ function App() {
     const [ targetDate, setTargetDate ] = useState(createRandomDate())
 
     //
+    const setLanguage = (locale: string) => {
+        window.localStorage.setItem('locale', locale)
+        window.location.reload()
+    }
+
+    //
     return (
         <React.Fragment>
 
@@ -30,6 +39,12 @@ function App() {
             <QuestionTwo targetDate={targetDate} />
             <QuestionThree targetDate={targetDate} />
             <QuestionFour targetDate={targetDate} />
+
+            <footer>
+                <div className="languageSelector">
+                    {availableLanguages.map((languages) => <div onClick={() => setLanguage(languages.locale)}>{languages.label}</div> )}
+                </div>
+            </footer>
 
         </React.Fragment>
     )

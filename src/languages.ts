@@ -12,6 +12,12 @@ import { enGB, de } from 'date-fns/esm/locale'
 //get the chosen locale
 const locale = window.localStorage.getItem('locale') || 'en-GB'
 
+//define a list of all the available languages - for the language selection
+const availableLanguages = [
+    { 'label': 'English', 'locale': 'en-GB' },
+    { 'label': 'Deutsch', 'locale': 'de-DE' },
+]
+
 //build up a list of all the available translations, so that we can pull the selected translation for export
 const availableTranslations: { [key: string] : { [key: string]: string } } = {
     'en-GB' : enTranslations,
@@ -53,4 +59,4 @@ function getNameOfMonth(month: number) : string {
 }
 
 //
-export { translations, formatDate, formatOrdinalNumber, getNameOfDay, getNameOfMonth }
+export { availableLanguages, translations, formatDate, formatOrdinalNumber, getNameOfDay, getNameOfMonth }
