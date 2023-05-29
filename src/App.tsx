@@ -30,6 +30,15 @@ function App() {
     }
 
     //
+    const setTheme = (theme: string) => {
+        window.localStorage.setItem('theme', theme)
+        window.location.reload()
+    }
+
+    //
+    document.body.setAttribute('data-theme', ((localStorage.getItem('theme') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'))
+
+    //
     return (
         <React.Fragment>
 
@@ -44,6 +53,12 @@ function App() {
                 <div className="languageSelector">
                     {availableLanguages.map((languages) => <div onClick={() => setLanguage(languages.locale)}>{languages.label}</div> )}
                 </div>
+
+                <div className="themeSelector">
+                    <div onClick={() => setTheme('light')}>Light</div>
+                    <div onClick={() => setTheme('dark')}>Dark</div>
+                </div>
+
             </footer>
 
         </React.Fragment>

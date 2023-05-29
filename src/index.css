@@ -9,6 +9,27 @@
     margin: 0;
 }
 
+/* set up the colours */
+:root {
+
+    /* define a colour scheme made up of some bright colours */
+    --backgroundColour1    : #ee7752;
+    --backgroundColour2    : #e73c7e;
+    --backgroundColour3    : #23a6d5;
+    --backgroundColour4    : #23d5ab;
+    --hexFillColour        : rgba(0, 0, 0, 0.01);
+    --hexBorderColour      : rgba(0, 0, 0, 0.0);
+
+    /* define a darker alternative colour scheme */
+    --backgroundColourAlt1 : #010332;
+    --backgroundColourAlt2 : #29011C;
+    --backgroundColourAlt3 : #43000D;
+    --backgroundColourAlt4 : #530005;
+    --hexFillColourAlt     : rgba(255, 255, 255, 0.01);
+    --hexBorderColourAlt   : rgba(255, 255, 255, 0.0);
+
+}
+
 /* core layout/fonts/colours */
 body {
 
@@ -48,10 +69,19 @@ body {
 
 /* animated background */
 body {
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background: linear-gradient(-45deg, var(--backgroundColour1), var(--backgroundColour2), var(--backgroundColour3), var(--backgroundColour4));
 	background-size: 400% 400%;
 	animation: gradient 120s ease infinite;
 	height: 100vh;
+}
+
+body[data-theme="dark"] {
+    --backgroundColour1 : var(--backgroundColourAlt1);
+    --backgroundColour2 : var(--backgroundColourAlt2);
+    --backgroundColour3 : var(--backgroundColourAlt3);
+    --backgroundColour4 : var(--backgroundColourAlt4);
+    --hexFillColour     : var(--hexFillColourAlt);
+    --hexBorderColour   : var(--hexBorderColourAlt);
 }
 
 /* add hexagons to the background - https://css-pattern.com/ */
@@ -62,18 +92,13 @@ body::after {
     content: '';
     z-index: -1;
 
-    /* edit these to control the size and colours */
-    --hexSize: 2em;
-    --hexFillColour: rgba(0, 0, 0, 0.01);
-    --hexBorderColour: rgba(0, 0, 0, 0.0);
-
     /* don't edit these */
     --g1: conic-gradient(from  60deg at 56.25% calc(425%/6),  #0000, var(--hexFillColour) .5deg 119.5deg, #0000 120deg);
     --g2: conic-gradient(from 180deg at 43.75% calc(425%/6),  #0000, var(--hexFillColour) .5deg 119.5deg, #0000 120deg);
     --g3: conic-gradient(from -60deg at 50%    calc(175%/12), #0000, var(--hexFillColour) .5deg 119.5deg, #0000 120deg);
 
-    background: var(--g1), var(--g1) var(--hexSize) calc(1.73 * var(--hexSize)), var(--g2), var(--g2) var(--hexSize) calc(1.73 * var(--hexSize)), var(--g3) var(--hexSize) 0, var(--g3) 0 calc(1.73 * var(--hexSize)) var(--hexBorderColour);
-    background-size: calc(2 * var(--hexSize)) calc(3.46 * var(--hexSize));
+    background: var(--g1), var(--g1) 2em calc(2em * 1.73), var(--g2), var(--g2) 2em calc(2em * 1.73), var(--g3) 2em 0, var(--g3) 0 calc(2em * 1.73) var(--hexBorderColour);
+    background-size: 4em calc(2em * 3.46);
 
 }
 
@@ -182,6 +207,29 @@ body::after {
 }
 
 .languageSelector div:not(:first-child)::before {
+    position: absolute;
+    content: '•';
+    left: -0.7em;
+    color: #ffffff;
+}
+
+/* really simple theme selector */
+.themeSelector {
+    display: flex;
+    justify-content: center;
+    gap:1em;
+}
+
+.themeSelector div {
+    position: relative;
+    cursor: pointer;
+}
+
+.themeSelector div:hover {
+    color: #222222;
+}
+
+.themeSelector div:not(:first-child)::before {
     position: absolute;
     content: '•';
     left: -0.7em;
