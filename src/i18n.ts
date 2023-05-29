@@ -44,7 +44,9 @@ function extractTypeAnnotation(value:string) {
 }
 
 //use the appropiate localiser on the value
+// @ts-ignore
 function localiseValue(value:unknown, { type, options }) {
+    // @ts-ignore
     return localizers[type](value, options)
 }
 
