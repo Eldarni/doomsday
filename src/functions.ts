@@ -19,16 +19,6 @@ function createRandomDate(from: number = 1600, to: number = 2299) : Date {
 
 }
 
-//translate the day number into a name
-function convertDayNumberToName(day:number) : string {
-    return (['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])[Math.min(Math.max(0, day), 6)];
-}
-
-//translate the day number into a name
-function convertMonthNumberToName(month:number) : string {
-    return (['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'])[Math.min(Math.max(0, (month - 1)), 11)];
-}
-
 //calculate the anchor day for the century
 function getAnchorDayForCentury(century:number) : number {
     return (9 - (Math.floor(century / 100) % 4) * 2) % 7;
@@ -51,32 +41,5 @@ function getDateOfNearestDoomsday(date: Date): Date {
     return addDays(doomsday, Math.floor(differenceInCalendarDays(date, doomsday) / 7) * 7)
 }
 
-//calculate the ordinal suffix for a number
-function getOrdinalSuffix(number:number) : string {
-
-    //
-    const plurals = new Intl.PluralRules('en-GB', { type: 'ordinal' })
-
-    //
-    const pluralMapping = {
-        'zero'  : 'th',
-        'one'   : 'st',
-        'two'   : 'nd',
-        'few'   : 'rd',
-        'many'  : 'th',
-        'other' : 'th',
-    }
-
-    //
-    return pluralMapping[plurals.select(number)]
-
-}
-
-//get century + suffix
-function getCenturyString(date: Date) : string {
-    const century = Math.floor(date.getFullYear() / 100) + 1
-    return century.toString() + getOrdinalSuffix(century)
-}
-
 //
-export { createRandomDate, convertDayNumberToName, convertMonthNumberToName, getAnchorDayForCentury, getAnchorDayForYear, getDoomsdayForMonth, getDateOfNearestDoomsday, getOrdinalSuffix, getCenturyString }
+export { createRandomDate, getAnchorDayForCentury, getAnchorDayForYear, getDoomsdayForMonth, getDateOfNearestDoomsday }
