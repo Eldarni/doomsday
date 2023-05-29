@@ -1,7 +1,6 @@
 
 //
 import React, { useState } from 'react'
-import { format } from 'date-fns'
 
 //
 import { __, getNameOfDay } from './i18n'

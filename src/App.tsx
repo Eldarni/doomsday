@@ -21,7 +21,7 @@ import QuestionFour from './QuestionFour'    //What day of the week is the date 
 function App() {
 
     //
-    const [ targetDate, setTargetDate ] = useState(createRandomDate())
+    const [ targetDate ] = useState(createRandomDate())
 
     //
     const setLanguage = (locale: string) => {
