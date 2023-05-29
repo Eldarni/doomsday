@@ -3,7 +3,6 @@
 
 ## Features
 - dark/light mode
-- language switch
 - refresh button
 - scoring - more points for skipping the parts
 - track speed/answers etc
@@ -11,15 +10,10 @@
 
 ## Localisation
 - work out what languages to support - en, de, fr, es, ???
-- https://date-fns.org/v2.0.0-alpha.9/docs/I18n - localisation of date formating etc
 - look into improving the output of the answer on question 3 to non include the year - option might be here: https://github.com/date-fns/date-fns/issues/1946
 
 ## Design
-- want a nice background, aurora is good, but someting animated and "timey"
-- good buttons/colours
-- need a nice font
 - responsive
 
 ## Misc
 - try to name the questions a bit better
-- use data-fns through the other questions, save decomposing the date
