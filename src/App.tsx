@@ -38,6 +38,36 @@ function App() {
         window.location.reload()
     }
 
+    //listen out for the super secret cheat code
+    React.useEffect(() => {
+
+        //
+        const cheatCode = 'iamnotconway'
+
+        //
+        const checkForCheatMode = (event: KeyboardEventInit) => {
+
+            //
+            window.sessionStorage.setItem('history', (window.sessionStorage.getItem('history')?.slice(cheatCode.length * -1) || '') + event.key)
+
+            //
+            const currentKeyPressHistory = window.sessionStorage.getItem('history') || ''
+            if (currentKeyPressHistory?.slice(cheatCode.length * -1) === cheatCode) {
+                setCheatMode(true)
+            }
+
+        }
+
+        //
+        document.addEventListener('keypress', checkForCheatMode)
+
+        //
+        return () => {
+            document.removeEventListener('keypress', checkForCheatMode)
+        }
+
+    }, [])
+
     //
     document.body.setAttribute('data-theme', ((localStorage.getItem('theme') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'))
 
