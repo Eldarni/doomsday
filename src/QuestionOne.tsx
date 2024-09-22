@@ -77,7 +77,7 @@ function QuestionOne(props: { targetDate: Date }) {
                 </div>
 
                 {showCorrectAnswer === true &&
-                    <p className="questionAnswer">{__`The correct answer is ${getAnchorDayForCentury(century)}:d(EEEE).`}</p>
+                    <p className="questionAnswer">{__`The correct answer is ${getNameOfDay(getAnchorDayForCentury(century))}.`}</p>
                 }
 
             </fieldset>
