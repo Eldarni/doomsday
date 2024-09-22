@@ -2,32 +2,36 @@
 //import the translations
 import enTranslations from './languages/en-GB.json' //with { type: "json" };
 import deTranslations from './languages/de-DE.json' //with { type: "json" };
+import afTranslations from './languages/af.json' //with { type: "json" };
 
 //get the format function from data-fns
 import { format } from 'date-fns/esm'
 
 //import the locales for dates
-import { enGB, de } from 'date-fns/esm/locale'
+import { enGB, de, af } from 'date-fns/esm/locale'
 
 //get the chosen locale
 const locale = window.localStorage.getItem('locale') || 'en-GB'
 
 //define a list of all the available languages - for the language selection
 const availableLanguages = [
-    { 'label': 'English', 'locale': 'en-GB' },
-    { 'label': 'Deutsch', 'locale': 'de-DE' },
+    { 'label': 'English',   'locale': 'en-GB' },
+    { 'label': 'Deutsch',   'locale': 'de-DE' },
+    { 'label': 'Afrikaans', 'locale': 'af'    },
 ]
 
 //build up a list of all the available translations, so that we can pull the selected translation for export
 const availableTranslations: { [key: string] : { [key: string]: string } } = {
     'en-GB' : enTranslations,
     'de-DE' : deTranslations,
+    'af'    : afTranslations,
 }
 
 //build up a list of all the available date locales, so that we can pull the selected locale for export
 const availableDateLocales: { [key: string] : Locale } = {
     'en-GB' : enGB,
     'de-DE' : de,
+    'af'    : af,
 }
 
 //
