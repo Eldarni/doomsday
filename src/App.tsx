@@ -69,7 +69,7 @@ function App() {
     }, [])
 
     //
-    document.body.setAttribute('data-theme', ((localStorage.getItem('theme') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'))
+    document.body.setAttribute('data-theme', (window.localStorage.getItem('theme') || ((window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light') || 'dark'))
 
     //
     return (
