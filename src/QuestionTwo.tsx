@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 import { __, getNameOfDay } from './i18n'
 
 //
-import { getAnchorDayForYear } from './functions'
+import { makeClassName, getAnchorDayForYear } from './functions'
 
 //Question Two: What is the anchor date for the year?
 function QuestionTwo(props: { targetDate: Date }) {
@@ -67,7 +67,7 @@ function QuestionTwo(props: { targetDate: Date }) {
                 <p className="questionText">{__`What is the anchor day for the year ${year}?`}</p>
                 <div className="questionOptions">
                     {buttons.map((button) => (
-                        <button key={button.day} onClick={() => handleButtonClick(button.day)} disabled={!button.enabled} className={button.clicked ? (button.correct ? 'correct' : 'incorrect') : ''}>
+                        <button key={button.day} onClick={() => handleButtonClick(button.day)} disabled={!button.enabled} className={makeClassName({ 'correct': button.clicked && button.correct, 'incorrect': button.clicked && !button.correct })}>
                             {getNameOfDay(button.day)}
                         </button>
                     ))}

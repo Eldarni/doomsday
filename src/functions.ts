@@ -2,6 +2,16 @@
 //
 import { isLeapYear, setDate, subDays, differenceInCalendarDays, addDays } from 'date-fns'
 
+//convert an object of classes to a string based on the truthiness of the value
+const makeClassName = (classes: { [key: string]: boolean }) => {
+    Object.keys(classes).forEach((key: string) => {
+        if (classes[key] !== true) {
+            delete classes[key]
+        }
+    })
+    return Object.keys(classes).join(' ')
+}
+
 //generate a random date
 function createRandomDate(from: number = 1600, to: number = 2299) : Date {
 
@@ -42,4 +52,4 @@ function getDateOfNearestDoomsday(date: Date): Date {
 }
 
 //
-export { createRandomDate, getAnchorDayForCentury, getAnchorDayForYear, getDoomsdayForMonth, getDateOfNearestDoomsday }
+export { makeClassName, createRandomDate, getAnchorDayForCentury, getAnchorDayForYear, getDoomsdayForMonth, getDateOfNearestDoomsday }

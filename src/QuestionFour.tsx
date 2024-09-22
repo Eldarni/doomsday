@@ -5,6 +5,9 @@ import React, { useState } from 'react'
 //
 import { __, getNameOfDay } from './i18n'
 
+//
+import { makeClassName } from './functions'
+
 //Question Four: (Now this is the big one) - What day of the week is the date on?
 function QuestionFour(props: { targetDate: Date }) {
 
@@ -64,7 +67,7 @@ function QuestionFour(props: { targetDate: Date }) {
                 <p className="questionText">{__`And finally, what day of the of the week does the ${props.targetDate}:d(PPP) fall on?`}</p>
                 <div className="questionOptions">
                     {buttons.map((button) => (
-                        <button key={button.day} onClick={() => handleButtonClick(button.day)} disabled={!button.enabled} className={button.clicked ? (button.correct ? 'correct' : 'incorrect') : ''}>
+                        <button key={button.day} onClick={() => handleButtonClick(button.day)} disabled={!button.enabled} className={makeClassName({ 'correct': button.clicked && button.correct, 'incorrect': button.clicked && !button.correct })}>
                             {getNameOfDay(button.day)}
                         </button>
                     ))}

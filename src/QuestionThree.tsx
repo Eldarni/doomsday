@@ -7,7 +7,7 @@ import { isSameDay, subDays, getDate, getMonth } from 'date-fns'
 import { __, formatOrdinalNumber, getNameOfMonth } from './i18n'
 
 //
-import { getDateOfNearestDoomsday } from './functions'
+import { makeClassName, getDateOfNearestDoomsday } from './functions'
 
 //Question Three: What is the nearest doomsday to the date?
 function QuestionThree(props: { targetDate: Date }) {
@@ -68,7 +68,7 @@ function QuestionThree(props: { targetDate: Date }) {
                 <p className="questionText">{__`What is the nearest doomsday for ${props.targetDate}:d(MMMM do)?`}</p>
                 <div className="questionOptions">
                     {buttons.map((button) => (
-                        <button key={button.id} onClick={() => handleButtonClick(button.date)} disabled={!button.enabled} className={button.clicked ? (button.correct ? 'correct' : 'incorrect') : ''}>
+                        <button key={button.id} onClick={() => handleButtonClick(button.date)} disabled={!button.enabled} className={makeClassName({ 'correct': button.clicked && button.correct, 'incorrect': button.clicked && !button.correct })}>
                             {formatOrdinalNumber(getDate(button.date))} <small>{getNameOfMonth(getMonth((button.date)))}</small>
                         </button>
                     ))}
