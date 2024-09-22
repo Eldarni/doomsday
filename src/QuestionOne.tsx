@@ -39,7 +39,7 @@ function QuestionOne(props: { targetDate: Date }) {
 
         //count how many wrong answers we have (from the clicked buttons) - if it's one, then disable two wrong buttons
         if (updatedButtons.filter((button) => button.clicked && button.correct === false).length == 1) {
-            for (var i = 0; i < 2; i++) {
+            for (let i = 0; i < 2; i++) {
 
                 //get any remaining options, filter out the correct value, and any that have already been clicked - we are going to
                 const remainingButtons = updatedButtons.filter((button) => button.clicked == false && button.enabled == true && button.day !== getAnchorDayForCentury(century))
