@@ -9,7 +9,7 @@ import { __, getNameOfDay } from './i18n'
 import { makeClassName } from './functions'
 
 //Question Four: (Now this is the big one) - What day of the week is the date on?
-function QuestionFour(props: { targetDate: Date }) {
+function QuestionFour(props: { cheatMode: boolean, targetDate: Date }) {
 
     //
     const [buttons, setButtons] = useState([
@@ -26,20 +26,20 @@ function QuestionFour(props: { targetDate: Date }) {
     const [showCorrectAnswer, setShowCorrectAnswer] = useState(false)
 
     //calculate the correct answer
-    const correctDate = props.targetDate.getDay()
+    const correctAnswer = props.targetDate.getDay()
 
     //
     const handleButtonClick = (answer: number) => {
 
         //update the clicked button with the correct states (basically set if it was a correct or incorrect answer) (using let as we may update this a couple of times)
-        let updatedButtons = buttons.map((button) => ((button.day == answer) ? { ...button, clicked: true, enabled: false, correct: correctDate == answer } : button ))
+        let updatedButtons = buttons.map((button) => ((button.day == answer) ? { ...button, clicked: true, enabled: false, correct: correctAnswer == answer } : button ))
 
         //count how many wrong answers we have (from the clicked buttons) - if it's one, then disable two wrong buttons
         if (updatedButtons.filter((button) => button.clicked && button.correct === false).length == 1) {
             for (let i = 0; i < 2; i++) {
 
                 //get any remaining options, filter out the correct value, and any that have already been clicked - we are going to
-                const remainingButtons = updatedButtons.filter((button) => button.clicked == false && button.enabled == true && (button.day != correctDate))
+                const remainingButtons = updatedButtons.filter((button) => button.clicked == false && button.enabled == true && (button.day != correctAnswer))
 
                 //disable one of the buttons
                 const buttonToDisable = remainingButtons[Math.floor(Math.random() * remainingButtons.length)].id
@@ -67,7 +67,7 @@ function QuestionFour(props: { targetDate: Date }) {
                 <p className="questionText">{__`And finally, what day of the of the week does the ${props.targetDate}:d(PPP) fall on?`}</p>
                 <div className="questionOptions">
                     {buttons.map((button) => (
-                        <button key={button.day} onClick={() => handleButtonClick(button.day)} disabled={!button.enabled} className={makeClassName({ 'correct': button.clicked && button.correct, 'incorrect': button.clicked && !button.correct })}>
+                        <button key={button.day} onClick={() => handleButtonClick(button.day)} disabled={!button.enabled} className={makeClassName({ 'correct': button.clicked && button.correct, 'incorrect': button.clicked && !button.correct, 'highlight': props.cheatMode && button.day == correctAnswer })}>
                             {getNameOfDay(button.day)}
                         </button>
                     ))}

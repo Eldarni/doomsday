@@ -171,6 +171,10 @@ body::after {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+.questionOptions button.highlight {
+    outline: 3px dashed rgba(2, 187, 0, 0.45) !important;
+}
+
 .questionOptions button.correct {
     background: rgba(2, 187, 0, 0.45);
 }

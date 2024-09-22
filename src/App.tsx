@@ -24,6 +24,9 @@ function App() {
     const [ targetDate ] = useState(createRandomDate())
 
     //
+    const [ cheatMode, setCheatMode ] = useState(false)
+
+    //
     const setLanguage = (locale: string) => {
         window.localStorage.setItem('locale', locale)
         window.location.reload()
@@ -44,10 +47,10 @@ function App() {
 
             <h1 className="targetDate">{__`What day does ${targetDate}:d(P) land on?`}</h1>
 
-            <QuestionOne targetDate={targetDate} />
-            <QuestionTwo targetDate={targetDate} />
-            <QuestionThree targetDate={targetDate} />
-            <QuestionFour targetDate={targetDate} />
+            <QuestionOne   cheatMode={cheatMode} targetDate={targetDate} />
+            <QuestionTwo   cheatMode={cheatMode} targetDate={targetDate} />
+            <QuestionThree cheatMode={cheatMode} targetDate={targetDate} />
+            <QuestionFour  cheatMode={cheatMode} targetDate={targetDate} />
 
             <footer>
                 <div className="languageSelector">

@@ -9,7 +9,7 @@ import { __, getNameOfDay } from './i18n'
 import { makeClassName, getAnchorDayForCentury } from './functions'
 
 //Question One: What is the anchor day for the century?
-function QuestionOne(props: { targetDate: Date }) {
+function QuestionOne(props: { cheatMode: boolean, targetDate: Date }) {
 
     //
     const [showCorrectAnswer, setShowCorrectAnswer] = useState(false)
@@ -29,20 +29,23 @@ function QuestionOne(props: { targetDate: Date }) {
     const century = Math.floor(props.targetDate.getFullYear() / 100) * 100
 
     //
+    const correctAnswer = getAnchorDayForCentury(century);
+
+    //
     const centuryNumber = (century / 100) + 1
 
     //
     const handleButtonClick = (answer: number) => {
 
         //update the clicked button with the correct states (basically set if it was a correct or incorrect answer) (using let as we may update this a couple of times)
-        let updatedButtons = buttons.map((button) => ((button.day === answer) ? { ...button, clicked: true, enabled: false, correct: (answer == getAnchorDayForCentury(century)) } : button ))
+        let updatedButtons = buttons.map((button) => ((button.day === answer) ? { ...button, clicked: true, enabled: false, correct: (answer == correctAnswer) } : button ))
 
         //count how many wrong answers we have (from the clicked buttons) - if it's one, then disable two wrong buttons
         if (updatedButtons.filter((button) => button.clicked && button.correct === false).length == 1) {
             for (let i = 0; i < 2; i++) {
 
                 //get any remaining options, filter out the correct value, and any that have already been clicked - we are going to
-                const remainingButtons = updatedButtons.filter((button) => button.clicked == false && button.enabled == true && button.day !== getAnchorDayForCentury(century))
+                const remainingButtons = updatedButtons.filter((button) => button.clicked == false && button.enabled == true && button.day !== correctAnswer)
 
                 //disable a day at random
                 const dayToDisable = remainingButtons[Math.floor(Math.random() * remainingButtons.length)].day
@@ -70,7 +73,7 @@ function QuestionOne(props: { targetDate: Date }) {
                 <p className="questionText">{__`What is the anchor day for the ${centuryNumber}:o century?`}</p>
                 <div className="questionOptions">
                     {buttons.map((button) => (
-                        <button key={button.day} onClick={() => handleButtonClick(button.day)} disabled={!button.enabled} className={makeClassName({ 'correct': button.clicked && button.correct, 'incorrect': button.clicked && !button.correct })}>
+                        <button key={button.day} onClick={() => handleButtonClick(button.day)} disabled={!button.enabled} className={makeClassName({ 'correct': button.clicked && button.correct, 'incorrect': button.clicked && !button.correct, 'highlight': props.cheatMode && button.day == correctAnswer })}>
                             {getNameOfDay(button.day)}
                         </button>
                     ))}

@@ -10,7 +10,7 @@ import { __, formatOrdinalNumber, getNameOfMonth } from './i18n'
 import { makeClassName, getDateOfNearestDoomsday } from './functions'
 
 //Question Three: What is the nearest doomsday to the date?
-function QuestionThree(props: { targetDate: Date }) {
+function QuestionThree(props: { cheatMode: boolean, targetDate: Date }) {
 
     //
     const [buttons, setButtons] = useState([
@@ -27,20 +27,20 @@ function QuestionThree(props: { targetDate: Date }) {
     const [showCorrectAnswer, setShowCorrectAnswer] = useState(false)
 
     //calculate the correct answer
-    const correctDate = getDateOfNearestDoomsday(props.targetDate)
+    const correctAnswer = getDateOfNearestDoomsday(props.targetDate)
 
     //
     const handleButtonClick = (answer: Date) => {
 
         //update the clicked button with the correct states (basically set if it was a correct or incorrect answer) (using let as we may update this a couple of times)
-        let updatedButtons = buttons.map((button) => ((isSameDay(answer, button.date)) ? { ...button, clicked: true, enabled: false, correct: (isSameDay(answer, correctDate)) } : button ))
+        let updatedButtons = buttons.map((button) => ((isSameDay(answer, button.date)) ? { ...button, clicked: true, enabled: false, correct: (isSameDay(answer, correctAnswer)) } : button ))
 
         //count how many wrong answers we have (from the clicked buttons) - if it's one, then disable two wrong buttons
         if (updatedButtons.filter((button) => button.clicked && button.correct === false).length == 1) {
             for (let i = 0; i < 2; i++) {
 
                 //get any remaining options, filter out the correct value, and any that have already been clicked - we are going to
-                const remainingButtons = updatedButtons.filter((button) => button.clicked == false && button.enabled == true && !isSameDay(button.date, correctDate))
+                const remainingButtons = updatedButtons.filter((button) => button.clicked == false && button.enabled == true && !isSameDay(button.date, correctAnswer))
 
                 //disable one of the buttons
                 const buttonToDisable = remainingButtons[Math.floor(Math.random() * remainingButtons.length)].id
@@ -68,7 +68,7 @@ function QuestionThree(props: { targetDate: Date }) {
                 <p className="questionText">{__`What is the nearest doomsday for ${props.targetDate}:d(MMMM do)?`}</p>
                 <div className="questionOptions">
                     {buttons.map((button) => (
-                        <button key={button.id} onClick={() => handleButtonClick(button.date)} disabled={!button.enabled} className={makeClassName({ 'correct': button.clicked && button.correct, 'incorrect': button.clicked && !button.correct })}>
+                        <button key={button.id} onClick={() => handleButtonClick(button.date)} disabled={!button.enabled} className={makeClassName({ 'correct': button.clicked && button.correct, 'incorrect': button.clicked && !button.correct, 'highlight': props.cheatMode && isSameDay(button.date, correctAnswer) })}>
                             {formatOrdinalNumber(getDate(button.date))} <small>{getNameOfMonth(getMonth((button.date)))}</small>
                         </button>
                     ))}
