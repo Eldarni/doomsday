@@ -83,6 +83,7 @@ function App() {
             <QuestionFour  cheatMode={cheatMode} targetDate={targetDate} />
 
             <footer>
+                
                 <div className="languageSelector">
                     {availableLanguages.map((languages) => <div onClick={() => setLanguage(languages.locale)}>{languages.label}</div> )}
                 </div>
@@ -90,6 +91,10 @@ function App() {
                 <div className="themeSelector">
                     <div onClick={() => setTheme('light')}>Light</div>
                     <div onClick={() => setTheme('dark')}>Dark</div>
+                </div>
+
+                <div className="wikipediaLink">
+                    <a href="https://en.wikipedia.org/wiki/Doomsday_rule" target="_blank">What is this? check out the Doomsday Rule on Wikipedia</a>
                 </div>
 
             </footer>
