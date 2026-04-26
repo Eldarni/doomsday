@@ -40,6 +40,26 @@ function getAnchorDayForYear(year:number) : number {
     return (lastTwoDigitsOfYear + Math.floor(lastTwoDigitsOfYear / 4) + getAnchorDayForCentury(Math.floor(year / 100) * 100)) % 7;
 }
 
+//same as getAnchorDayForYear but returns the working out steps
+function getAnchorDayForYearWithWorking(year:number) : { AC: number, T0: number, T1: number, T2: number, T3: number, T4: number, T5: number, T6: number } {
+
+    //
+    const AC = getAnchorDayForCentury(year);
+
+    //
+    const T0 = year % 100;
+    const T1 = ((T0 % 2 === 1) ? T0 + 11 : T0);
+    const T2 = T1 / 2;
+    const T3 = ((T2 % 2 === 1) ? T2 + 11 : T2);
+    const T4 = (T3 % 7);
+    const T5 = 7 - T4;
+    const T6 = getAnchorDayForCentury(year) + T5;
+
+    //
+    return { AC, T0, T1, T2, T3, T4, T5, T6 }
+
+}
+
 //Return the doomsday for the month, this returns the mnemonic date for extra points
 function getDoomsdayForMonth(date: Date): Date {
     return setDate(date, ([((!isLeapYear(date)) ? 3 : 4), ((!isLeapYear(date)) ? 28 : 29), 14, 4, 9, 6, 11, 8, 5, 10, 7, 12])[date.getMonth()])
@@ -52,4 +72,4 @@ function getDateOfNearestDoomsday(date: Date): Date {
 }
 
 //
-export { makeClassName, createRandomDate, getAnchorDayForCentury, getAnchorDayForYear, getDoomsdayForMonth, getDateOfNearestDoomsday }
+export { makeClassName, createRandomDate, getAnchorDayForCentury, getAnchorDayForYear, getAnchorDayForYearWithWorking, getDoomsdayForMonth, getDateOfNearestDoomsday }

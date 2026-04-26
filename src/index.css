@@ -220,6 +220,51 @@ body::after {
     margin-block-start: 1em;
     margin-inline: auto;
     max-width: 1000px;
+    text-align: left;
+    font-size: 1.2rem;
+}
+
+.helpText:has(.helpTextContent) {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.helpTextContent ul {
+    margin-block-start: 1em;
+    padding-inline-start: 1.5em;
+} 
+.helpTextContent li {
+    margin-block-start: 0.5em;
+}
+
+.helpTextTable {
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 16px;
+    border-radius: 15px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.helpTextTable div {
+    padding: 2px 6px;
+}
+
+
+.helpTextTable .highlight {
+    font-weight: bold;
+    background-color: rgba(2, 187, 0, 0.45);
+    border-radius: 4px;
+}
+
+.helpText code {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
 }
 
 /* really simple language selector */
