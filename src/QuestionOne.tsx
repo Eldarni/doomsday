@@ -13,6 +13,7 @@ function QuestionOne(props: { cheatMode: boolean, targetDate: Date }) {
 
     //
     const [showCorrectAnswer, setShowCorrectAnswer] = useState(false)
+    const [showHelpText, setShowHelpText] = useState(false)
 
     //
     const [buttons, setButtons] = useState([
@@ -70,6 +71,10 @@ function QuestionOne(props: { cheatMode: boolean, targetDate: Date }) {
 
             <fieldset className="questionWrapper" disabled={showCorrectAnswer}>
 
+                {!showCorrectAnswer === true && (
+                    <button className="showHelpTextButton" onClick={() => setShowHelpText(!showHelpText)}>?</button>
+                )}
+
                 <p className="questionText">{__`What is the anchor day for the ${centuryNumber}:o century?`}</p>
                 <div className="questionOptions">
                     {buttons.map((button) => (
@@ -81,6 +86,12 @@ function QuestionOne(props: { cheatMode: boolean, targetDate: Date }) {
 
                 {showCorrectAnswer === true &&
                     <p className="questionAnswer">{__`The correct answer is ${getNameOfDay(getAnchorDayForCentury(century))}.`}</p>
+                }
+
+                {(showCorrectAnswer === true || showHelpText === true) && 
+                    <div className="helpText">
+                        <p>{__`The way I remember is by using a memory aid by associating each day with a year, so Tuesday is 1620, Sunday is 1720, Friday is 1822, and Wednesday is 1922.`}</p>
+                    </div>
                 }
 
             </fieldset>
