@@ -77,7 +77,7 @@ function QuestionTwo(props: { cheatMode: boolean, targetDate: Date }) {
                 </div>
 
                 {showCorrectAnswer === true &&
-                    <p className="questionAnswer">{__`The correct answer is ${getAnchorDayForYear(year)}:d(EEEE).`}</p>
+                    <p className="questionAnswer">{__`The correct answer is ${getNameOfDay(correctAnswer)}.`}</p>
                 }
 
             </fieldset>
