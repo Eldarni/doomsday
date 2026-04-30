@@ -266,6 +266,21 @@ body::after {
     }
 }
 
+.helpTextQuestionThree table {
+    width: 100%;
+    margin-block: 0.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-collapse: collapse;
+    & :is(td, th) {
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        padding: 4px;
+    }
+    & tr.highlight {
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+}
+
 /* really simple language selector */
 .languageSelector {
     display: flex;
