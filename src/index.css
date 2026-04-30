@@ -212,6 +212,7 @@ body::after {
     margin-block-start: 1em;
 }
 
+/* help text */
 .helpText {
     background-color: rgba(255, 255, 255, 0.05);
     border: 2px solid rgba(255, 255, 255, 0.06);
@@ -222,49 +223,47 @@ body::after {
     max-width: 1000px;
     text-align: left;
     font-size: 1.2rem;
+    font-weight: 300;
+    & b {
+        font-weight: 700;
+    }
+    & code {
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 2px 6px;
+        border-radius: 4px;
+        white-space: nowrap;
+    }
 }
 
-.helpText:has(.helpTextContent) {
+.helpTextQuestionTwo {
     display: flex;
     flex-direction: row;
     gap: 1em;
-}
-
-.helpTextContent ul {
-    margin-block-start: 1em;
-    padding-inline-start: 1.5em;
-} 
-.helpTextContent li {
-    margin-block-start: 0.5em;
-}
-
-.helpTextTable {
-    width: 240px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 16px;
-    border-radius: 15px;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.helpTextTable div {
-    padding: 2px 6px;
-}
-
-
-.helpTextTable .highlight {
-    font-weight: bold;
-    background-color: rgba(2, 187, 0, 0.45);
-    border-radius: 4px;
-}
-
-.helpText code {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 2px 6px;
-    border-radius: 4px;
-    white-space: nowrap;
+    & main ul {
+        margin-block-start: 1em;
+        padding-inline-start: 1.5em;
+    } 
+    & main ul li {
+        margin-block-start: 0.5em;
+    }
+    & aside {
+        width: 240px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 16px;
+        border-radius: 15px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    & aside div {
+        padding: 2px 6px;
+    }
+    & aside .highlight {
+        font-weight: bold;
+        background-color: rgba(2, 187, 0, 0.45);
+        border-radius: 4px;
+    }
 }
 
 /* really simple language selector */
