@@ -69,10 +69,10 @@ body {
 
 /* animated background */
 body {
-	background: linear-gradient(-45deg, var(--backgroundColour1), var(--backgroundColour2), var(--backgroundColour3), var(--backgroundColour4));
-	background-size: 400% 400%;
-	animation: gradient 120s ease infinite;
-	height: 100vh;
+    background: linear-gradient(-45deg, var(--backgroundColour1), var(--backgroundColour2), var(--backgroundColour3), var(--backgroundColour4));
+    background-size: 400% 400%;
+    animation: gradient 120s ease infinite;
+    height: 100vh;
 }
 
 body[data-theme="dark"] {
@@ -144,7 +144,7 @@ body::after {
     letter-spacing: 2px;
 }
 
-
+/* question text */
 .questionText {
     font-size: 1.563rem;
     font-weight: 400;

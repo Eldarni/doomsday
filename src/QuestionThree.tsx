@@ -62,20 +62,20 @@ function QuestionThree(props: { cheatMode: boolean, targetDate: Date }) {
 
     //
     const table = [
-        { "month": "January",               "day":  3, "date": "January 3rd",   "mnemonic": " - ",                                "days": [3, 10, 17, 24, 31] },
+        { "month": "January",              "day":  3, "date": "January 3rd",   "mnemonic": " - ",                                "days": [3, 10, 17, 24, 31] },
         { "month": "January (Leap Year)",  "day":  4, "date": "January 4th",   "mnemonic": " - ",                                "days": [4, 11, 18, 25]     },
-        { "month": "February",              "day": 28, "date": "February 28th", "mnemonic": "The last day of February",           "days": [7, 14, 21, 28]     },
+        { "month": "February",             "day": 28, "date": "February 28th", "mnemonic": "The last day of February",           "days": [7, 14, 21, 28]     },
         { "month": "February (Leap Year)", "day": 29, "date": "February 29th", "mnemonic": "The last day of February",           "days": [1, 8, 15, 22, 29]  },
-        { "month": "March",                 "day": 14, "date": "March 14th",    "mnemonic": "Pi Day",                             "days": [7, 14, 21, 28]     },
-        { "month": "April",                 "day":  4, "date": "April 4th",     "mnemonic": "<b>4/4</b>, 6/6, 8/8, 10/10, 12/12", "days": [4, 11, 18, 25]     },
-        { "month": "May",                   "day":  9, "date": "May 9th",       "mnemonic": "9-to-5 at the 7-11",                 "days": [2, 9, 16, 23, 30]  },
-        { "month": "June",                  "day":  6, "date": "June 6th",      "mnemonic": "4/4, <b>6/6</b>, 8/8, 10/10, 12/12", "days": [6, 13, 20, 27]     },
-        { "month": "July",                  "day": 11, "date": "July 11th",     "mnemonic": "9-to-5 at <b>7-11</b>",              "days": [4, 11, 18, 25]     },
-        { "month": "August",                "day":  8, "date": "August 8th",    "mnemonic": "4/4, 6/6, <b>8/8</b>, 10/10, 12/12", "days": [1, 8, 15, 22, 29]  },
-        { "month": "September",             "day":  5, "date": "September 5th", "mnemonic": "<b>9-to-5</b> at 7-11",              "days": [5, 12, 19, 26]     },
-        { "month": "October",               "day": 10, "date": "October 10th",  "mnemonic": "4/4, 6/6, 8/8, <b>10/10</b>, 12/12", "days": [3, 10, 17, 24, 31] },
-        { "month": "November",              "day":  7, "date": "November 7th",  "mnemonic": "9-to-5 at <b>7-11</b>",              "days": [7, 14, 21, 28]  },
-        { "month": "December",              "day": 12, "date": "December 12th", "mnemonic": "4/4, 6/6, 8/8, 10/10, <b>12/12</b>", "days": [5, 12, 19, 26]     },
+        { "month": "March",                "day": 14, "date": "March 14th",    "mnemonic": "Pi Day",                             "days": [7, 14, 21, 28]     },
+        { "month": "April",                "day":  4, "date": "April 4th",     "mnemonic": "<b>4/4</b>, 6/6, 8/8, 10/10, 12/12", "days": [4, 11, 18, 25]     },
+        { "month": "May",                  "day":  9, "date": "May 9th",       "mnemonic": "9-to-5 at the 7-11",                 "days": [2, 9, 16, 23, 30]  },
+        { "month": "June",                 "day":  6, "date": "June 6th",      "mnemonic": "4/4, <b>6/6</b>, 8/8, 10/10, 12/12", "days": [6, 13, 20, 27]     },
+        { "month": "July",                 "day": 11, "date": "July 11th",     "mnemonic": "9-to-5 at <b>7-11</b>",              "days": [4, 11, 18, 25]     },
+        { "month": "August",               "day":  8, "date": "August 8th",    "mnemonic": "4/4, 6/6, <b>8/8</b>, 10/10, 12/12", "days": [1, 8, 15, 22, 29]  },
+        { "month": "September",            "day":  5, "date": "September 5th", "mnemonic": "<b>9-to-5</b> at 7-11",              "days": [5, 12, 19, 26]     },
+        { "month": "October",              "day": 10, "date": "October 10th",  "mnemonic": "4/4, 6/6, 8/8, <b>10/10</b>, 12/12", "days": [3, 10, 17, 24, 31] },
+        { "month": "November",             "day":  7, "date": "November 7th",  "mnemonic": "9-to-5 at <b>7-11</b>",              "days": [7, 14, 21, 28]  },
+        { "month": "December",             "day": 12, "date": "December 12th", "mnemonic": "4/4, 6/6, 8/8, 10/10, <b>12/12</b>", "days": [5, 12, 19, 26]     },
     ];
 
     //are we in a leap year?
