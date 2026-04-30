@@ -4,5 +4,6 @@
     "The correct answer is {0}.": "Die korrekte antwoord is {0}.",
     "What is the anchor day for the year {0}?": "Wat is die ankerdag vir die jaar {0}?",
     "What is the nearest doomsday for {0}?": "Wat is die naaste oordeelsdag vir {0}?",
-    "And finally, what day of the of the week does the {0} fall on?": "En laastens, op watter dag van die week val {0}?"
+    "And finally, what day of the of the week does the {0} fall on?": "En laastens, op watter dag van die week val {0}?",
+    "Sorry, I have not implemented a translation for this help text yet.": "Verskoning, ek het nog nie 'n vertaling vir hierdie hulpboodskap geïmplementeer nie."
 }

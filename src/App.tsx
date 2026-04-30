@@ -73,7 +73,7 @@ function App() {
 
     //
     return (
-        <React.Fragment>
+        <main data-locale={window.localStorage.getItem('locale') || 'en-GB'} data-theme={window.localStorage.getItem('theme') || ((window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light') || 'dark'}>
 
             <h1 className="targetDate">{__`What day does ${targetDate}:d(P) land on?`}</h1>
 
@@ -99,7 +99,7 @@ function App() {
 
             </footer>
 
-        </React.Fragment>
+        </main>
     )
 
 }

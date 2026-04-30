@@ -4,5 +4,6 @@
     "The correct answer is {0}.": "Die korrekte Antwort lautet {0}.",
     "What is the anchor day for the year {0}?": "Was ist der Ankertag für das Jahr {0}?",
     "What is the nearest doomsday for {0}?": "Welches ist der nächstgelegene Tag des Jüngsten Gerichts für den {0}?",
-    "And finally, what day of the of the week does the {0} fall on?": "Und schließlich, auf welchen Wochentag fällt der {0}?"
+    "And finally, what day of the of the week does the {0} fall on?": "Und schließlich, auf welchen Wochentag fällt der {0}?",
+    "Sorry, I have not implemented a translation for this help text yet.": "Entschuldigung, ich habe noch keine Übersetzung für diesen Hilfetext implementiert."
 }

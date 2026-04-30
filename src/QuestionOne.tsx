@@ -88,9 +88,15 @@ function QuestionOne(props: { cheatMode: boolean, targetDate: Date }) {
                     <p className="questionAnswer">{__`The correct answer is ${getNameOfDay(getAnchorDayForCentury(century))}.`}</p>
                 }
 
-                {(showCorrectAnswer === true || showHelpText === true) && 
+                {(showCorrectAnswer === true || showHelpText === true) &&
                     <div className="helpText">
+
+                        <div className="helpTextApology">
+                            <p>{__`Sorry, I have not implemented a translation for this help text yet.`}</p>
+                        </div>
+
                         <p>The way I remember is by using a memory aid by associating each day with a year, so Tuesday is 1620, Sunday is 1721, Friday is 1822, and Wednesday is 1923.</p>
+
                     </div>
                 }
 

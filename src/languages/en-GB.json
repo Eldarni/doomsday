@@ -4,5 +4,6 @@
     "The correct answer is {0}.": "The correct answer is {0}.",
     "What is the anchor day for the year {0}?": "What is the anchor day for the year {0}?",
     "What is the nearest doomsday for {0}?": "What is the nearest doomsday for {0}?",
-    "And finally, what day of the of the week does the {0} fall on?": "And finally, what day of the of the week does the {0} fall on?"
+    "And finally, what day of the of the week does the {0} fall on?": "And finally, what day of the of the week does the {0} fall on?",
+    "Sorry, I have not implemented a translation for this help text yet.": "Sorry, I have not implemented a translation for this help text yet."
 }

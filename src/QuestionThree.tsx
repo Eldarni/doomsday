@@ -82,7 +82,7 @@ function QuestionThree(props: { cheatMode: boolean, targetDate: Date }) {
     const isLeapYear = ((year) => {
         return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
     })(props.targetDate.getFullYear());
-    
+
     //get the current month index - account for leap years etc
     const currentMonth = ((): { month: string; day: number; date: string; mnemonic: string; days: number[] } => {
 
@@ -91,14 +91,14 @@ function QuestionThree(props: { cheatMode: boolean, targetDate: Date }) {
             return table[props.targetDate.getMonth() + 2];
         }
 
-        //January 
+        //January
         if (props.targetDate.getMonth() === 0) {
             return ((!isLeapYear) ? table[0] : table[1]);
         }
 
         //February
         return ((!isLeapYear) ? table[2] : table[3]);
-        
+
     })();
 
     //
@@ -126,6 +126,11 @@ function QuestionThree(props: { cheatMode: boolean, targetDate: Date }) {
 
                 {(showCorrectAnswer === true || showHelpText === true) &&
                     <div className="helpText helpTextQuestionThree">
+
+                        <div className="helpTextApology">
+                            <p>{__`Sorry, I have not implemented a translation for this help text yet.`}</p>
+                        </div>
+
                         <p>We can use a series of mnemonics to remember the doomsdays for each month, from there it's a matter of counting forward or backward to find the nearest one.</p>
                         <table>
                             <thead>
