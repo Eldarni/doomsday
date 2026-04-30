@@ -83,9 +83,9 @@ function App() {
             <QuestionFour  cheatMode={cheatMode} targetDate={targetDate} />
 
             <footer>
-                
+
                 <div className="languageSelector">
-                    {availableLanguages.map((languages) => <div onClick={() => setLanguage(languages.locale)}>{languages.label}</div> )}
+                    {availableLanguages.map((languages) => <div key={languages.locale} onClick={() => setLanguage(languages.locale)}>{languages.label}</div> )}
                 </div>
 
                 <div className="themeSelector">
